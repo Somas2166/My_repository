@@ -32,19 +32,19 @@ public class PlainTutorialExample
 		S7Connector connector = 
 				S7ConnectorFactory
 				.buildTCPConnector()
-				.withHost("10.0.0.220")
+				.withHost("192.168.0.1")
 				.withRack(0)
 				.withSlot(2)
 				.build();
 		
-		//Read from DB100 10 bytes
-		byte[] bs = connector.read(DaveArea.DB, 100, 10, 0);
+		//Read from DB1 2 bytes
+		byte[] bs = connector.read(DaveArea.DB, 1, 2, 0);
 		
 		//Set some bytes
 		bs[0] = 0x00;
 		
-		//Write to DB100 10 bytes
-		connector.write(DaveArea.DB, 101, 0, bs);
+		//Write to DB1 2 bytes
+		connector.write(DaveArea.DB, 1, 0, bs);
 		
 		//Close connection
 		connector.close();
